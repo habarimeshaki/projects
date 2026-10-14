@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>New Reservation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/reservation.css">
+</head>
+<body>
+<header><h2>Five Star Hotel</h2><p>Plan your stay with us</p><a class="back-link" href="bookings.html">Back to booking calculator</a></header>
+<main>
+   <form action="php/book.php" id="reservation_form" onsubmit="sessionStorage.removeItem('canReserve');" method="post" >
+       <h2>New Reservation</h2>
+       <p> <fieldset><legend> Names:</legend><input required name="name"  type="text" placeholder="Enter Full Names" id=""></fieldset></p>
+       <p><fieldset><legend>Email:</legend> <input required name="email"  type="email" placeholder="Enter Your Email" id=""></fieldset></p>
+       <p><fieldset><legend>Phone:</legend> <input required name="phone"  type="tel" placeholder="Phone Number" id=""></fieldset></p>
+       <p><fieldset><legend>Check-in Date:</legend> <input required name="check_in"   type="date" id=""></fieldset></p>
+       <p><fieldset><legend>Check-out Date:</legend><input required name="check_out"  type="date" id=""></fieldset></p>
+       <p><fieldset><legend>Number of Guests</legend><input required name="guest"  type="number" placeholder="Number of guest" id=""></fieldset></p>
+       <p><fieldset><legend>Room Type:</legend>
+         <select required name="room_type" id="">
+           <option value="VIP">VIP</option>
+           <option value="Standard" selected>Standard</option>
+         </select>
+         </fieldset>
+      </p>
+      <p><fieldset><legend>Special Requests (optional):</legend> <textarea name="request" id=""></textarea></fieldset></p>
+      <p><button type="submit">Book Now</button></p>
+   </form> 
+</main>
+</body>
+</html>
+
+<script>
+   if (sessionStorage.getItem("canReserve") !== "true") {
+  window.location.href = "bookings.html";
+}
+
+   const params = new URLSearchParams(window.location.search);
+   const nights = params.get("nights");
+   const parent = document.getElementById("reservation_form");
+   const element = document.createElement("input");
+   element.setAttribute("type","hidden");
+   element.setAttribute("name","nights");
+   element.value = nights;
+   parent.appendChild(element);
+</script>

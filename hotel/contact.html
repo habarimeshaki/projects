@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+<header><h2>Five Star Hotel</h2><p>We would love to hear from you</p><a class="back-link" href="index.html">Back to home</a></header>
+<main>
+  <form action="">
+  <p><h2>Contact Us</h2></p>
+  <p><fieldset><legend>Names:</legend><input type="text" name="" placeholder="Enter Full Names" id="names"></fieldset></p>
+  <p><fieldset><legend>Email:</legend><input type="email" name="" placeholder="Enter your Email" id="email"></fieldset></p>
+  <p>
+  <fieldset><legend>Country:</legend>
+  <select id="country" name="country" required>
+  <option value="">Loading countries...</option>
+  <option value="Rw">Rwanda</option>
+  <option value="DRC">Democratic Republic of Congo</option>
+  <option value="Bu">Burundi</option>
+  </select></fieldset>
+  </p>
+  <p><fieldset><legend>City:</legend><input type="text" name="" placeholder="Enter city" id="city"></fieldset></p>
+  <p><fieldset><legend>Age:</legend><input type="number" name="" placeholder="Enter your age" id="age"></fieldset></p>
+  <p id="errors"></p>
+  <p><button onclick="validation()" type="button">Send</button></p>
+  
+  </form>
+
+</main>
+</body>
+</html>
+
+
+<script>
+
+fetch("https://raw.githubusercontent.com/samayo/country-json/master/src/country-by-name.json")
+    .then(response => response.json())
+    .then(data => {
+        const select = document.getElementById("country");
+
+        select.innerHTML = '<option value="">Select your country</option>';
+
+        data.forEach(country => {
+            const option = document.createElement("option");
+            option.value = country.country;
+            option.textContent = country.country;
+            select.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error(error);
+        document.getElementById("country").innerHTML =
+            '<option value="" disabled>Failed to load countries</option>';
+    });
+
+
+    function validation(){
+        let email=document.getElementById("email");
+        let names=document.getElementById("names");
+        let age=document.getElementById("age");
+        let country=document.getElementById("country");
+        let city=document.getElementById("city");
+        let error=document.getElementById("errors");
+
+email.classList.remove("invalid");
+names.classList.remove("invalid");
+age.classList.remove("invalid");
+country.classList.remove("invalid");
+city.classList.remove("invalid");
+
+
+ if(names.value == ""){
+    error.innerHTML="Names field must not be empty.";
+    names.focus();
+    names.classList.add("invalid");
+    return 0;
+ }
+ 
+ 
+  else if(email.value.includes("@") && email.value.includes(".")){
+      if((email.value.indexOf("@") < email.value.indexOf(".")) && (email.value.length > (email.value.indexOf(".") + 2)) && (email.value.indexOf("@") + 2) < email.value.indexOf(".")){
+  error.innerHTML="";
+       }
+else{
+error.innerHTML="Correct your email, incorrect position of '@' or '.'";
+email.focus();
+email.classList.add("invalid");
+return 0;
+}
+}else{
+error.innerHTML="Invalid email, must include '@' and '.'";
+email.focus();
+    email.classList.add("invalid");
+    return 0;
+}
+
+
+ if(country.value==""){
+        error.innerHTML="Country field must not be empty.";
+        country.focus();
+        country.classList.add("invalid");
+        return 0;
+    }
+   else   if(city.value==""){
+          error.innerHTML="City field must not be empty.";
+          city.focus();
+          city.classList.add("invalid");
+          return 0;
+        }
+  if(age.value == ""){
+error.innerHTML="Age field must not be empty.";
+age.focus();
+age.classList.add("invalid");
+return 0;
+  } 
+  if(age.value < 18){
+          error.innerHTML="Sorry You must be over 18 years old.";
+          age.focus();
+          age.classList.add("invalid");
+          return 0;
+        }
+
+      
+       
+    }
+</script>

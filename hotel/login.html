@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login | Five Star Hotel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<header><h2>Five Star Hotel</h2><p>A page for only Authorized users</p><a class="back-link" href="index.html">Back to home</a></header>
+<main>
+   <form method="post" action="php/authentication.php" onsubmit="return login();">
+   <h2>Welcome back</h2>
+   <p class="form-intro">Enter your account details to continue.</p>
+   <p><label for="name">Username</label><input id="name" type="text" name="username" placeholder="Enter username" autocomplete="username" required></p>
+   <p><label for="pass">Password</label><input id="pass" type="password" name="password" placeholder="Enter password" autocomplete="current-password" required></p>
+   <p><button  type="submit">Login</button></p>
+   <p><span id="error"></span></p>
+   </form>
+</main>
+</body>
+</html>
+
+<script type="text/javascript">
+  const loginMessage = new URLSearchParams(window.location.search).get("error");
+  if (loginMessage === "invalid") {
+      document.getElementById("error").textContent = "Invalid username or password.";
+  }
+
+  function login(){
+      let pass=document.getElementById("pass");
+      let name=document.getElementById("name");
+      let error=document.getElementById("error");
+      
+       error.innerHTML="";
+      if((name.value == "") || (pass.value == "")){
+        error.innerHTML ="Missing Details!";
+        return false;
+      }
+      else{
+      return true;
+      
+      }
+      
+  }
+</script>

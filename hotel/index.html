@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<header>
+   <div class="open_button"  id="open_button"  onclick="show()">
+      <div></div>
+      <div></div>
+      <div></div>
+   </div>
+   <h2>Five Star Hotel</h2>
+   
+   <nav>
+   <aside id="aside" >
+   <div class=""  id="close_button"  onclick="document.getElementById('open_button').click();">
+   <div></div>
+   <div></div>
+   </div>
+   <ul>
+   <li><a href="bookings.html" >Bookings</a></li>
+   <li><a href="contact.html" >Contact Us</a></li>
+   <li><a href="login.html" >Login</a></li>
+   </ul>
+   </aside>
+   </nav>
+   
+</header>
+<main>
+         <h2>Welcome to Five star Hotel. We are here to serve you.</h2>
+         <ul>
+           <li>Do you want to book a room or making reservation just click <a href="bookings.html" >Here</a>.</li>
+           <li>Do you want to visit our Hotel.</li>
+           <li>Do you want to explore nature with us.</li>
+           <li>Do you want to have nice memorable moment.</li>
+           <li>Do you want to enjoy your meals with us.</li>
+         </ul>
+</main>
+</body>
+</html>
+<script type="text/javascript">
+   function show(){
+     document.getElementById("aside").classList.toggle("aside");
+   }
+</script>

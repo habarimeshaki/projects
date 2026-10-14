@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Booking Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/bookings.css">
+</head>
+<body>
+<header><h2>Five Star Hotel</h2><p>Find the right rate for your stay</p><a class="back-link" href="index.html">Back to home</a></header>
+<main>
+    <form action="">
+        <h2>Booking Calculator</h2>
+        <p><input id="nights" type="text" name="" placeholder="Enter the number of nights" id=""></p>
+        <p><button onclick="check()" type="button">Check Rate</button></p>
+        <p><span id="result"></span></p>
+        <p id="link_parent"></p>
+    </form>
+</main>
+</body>
+</html>
+
+
+<script>
+    function check(){   
+    let n=document.getElementById("nights").value;
+    let result=document.getElementById("result");
+    let link_parent=document.getElementById("link_parent");
+
+    if(n<1){
+        result.innerHTML="Please enter a valid number of nights.";
+        result.style.color="red"
+        link_parent.innerHTML="";
+    }
+    else if(n==1 || n==2){
+         result.innerHTML="Standard rate: $120/night.";
+        result.style.color="peru";
+        link_parent.innerHTML="<a href='reservation.html?nights="+n+"'>Continue Booking</a>";
+        sessionStorage.setItem("canReserve", "true");
+    }
+    else if(n<=6 && n>=3){
+         result.innerHTML="Weekly discount rate: $100/night.";
+        result.style.color="peru";
+        link_parent.innerHTML="<a href='reservation.html?nights="+n+"'>Continue Booking</a>";
+        sessionStorage.setItem("canReserve", "true");
+    }
+    else if(n>6){
+        result.innerHTML="Extended stay rate: $80/night.";
+        result.style.color="peru";
+        link_parent.innerHTML="<a href='reservation.html?nights="+n+"'>Continue Booking</a>";
+        sessionStorage.setItem("canReserve", "true");
+    }
+      else{
+        result.innerHTML="";
+        result.style.color="peru";
+        link_parent.innerHTML="";
+    }
+    }
+  
+</script>

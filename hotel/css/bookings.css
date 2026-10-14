@@ -1,0 +1,15 @@
+body { width:100%; max-width:none; min-height:100vh; height:auto; padding:clamp(12px,3vw,32px); overflow-x:hidden; display:flex; flex-direction:column; align-items:center; }
+header, main { width:min(100%, 680px); }
+header { padding:26px 30px 22px; text-align:center; background:rgba(0,51,153,.84); border-radius:16px 16px 0 0; box-shadow:0 10px 28px rgba(0,0,0,.2); }
+header h2, header p, main h2, main input, main button { font-family:Arial,sans-serif; }
+header h2 { color:white; font-size:clamp(1.5rem,4vw,2rem); font-weight:700; }
+header p { margin-top:7px; color:#e8f0ff; font-size:.98rem; }
+main { min-height:350px; display:grid; place-items:center; padding:clamp(24px,5vw,46px); background:rgba(255,255,255,.92); border-radius:0 0 16px 16px; box-shadow:0 12px 28px rgba(0,0,0,.16); }
+main form { width:min(100%,460px); display:flex; flex-direction:column; align-items:stretch; gap:18px; text-align:center; }
+main h2 { color:#12346b; font-size:clamp(1.6rem,4vw,2.1rem); font-weight:700; }
+main input { width:100%; min-height:48px; padding:0 14px; border:1px solid #b8c8df; border-radius:8px; outline:0; color:#27364d; font-size:1rem; }
+main input:focus { border-color:#0066b3; box-shadow:0 0 0 3px rgba(0,102,179,.13); }
+main button, #link_parent a { display:block; width:100%; min-height:48px; padding:13px; border:0; border-radius:8px; background:#005eb8; color:white; font-family:Arial,sans-serif; font-size:1rem; font-weight:700; text-align:center; text-decoration:none; cursor:pointer; transition:background .2s, transform .2s; }
+main button:hover, #link_parent a:hover { background:#00478c; transform:translateY(-1px); }
+#result { display:block; min-height:24px; font-family:Arial,sans-serif; font-size:1rem; font-weight:600; }
+@media (max-width:600px) { body { padding:10px; } header { padding:22px 18px 18px; } main { min-height:calc(100vh - 122px); padding:24px 18px; } }

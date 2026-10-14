@@ -1,0 +1,71 @@
+*{
+padding:0;
+margin:0;
+font-weight:400;
+font-family:'Courier New', Courier, monospace;
+box-sizing:border-box;
+color:black;
+}
+*::-webkit-scrollbar{
+  display: none;
+}
+@media screen and (max-width: 600px){
+ *{
+
+ } 
+}
+body {
+background:url('hotel.jpg');
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment: fixed;
+min-height:100vh;
+height:100vh;
+width:100vw;
+max-width: 800px;
+padding:10px;
+overflow:scroll;
+}
+
+header{
+background:rgba(0,0,255,.6);
+min-height:80px;
+height:20%;
+width:100%;
+border-radius:10px 10px 0 0;
+padding:4px;
+  align-content:center;
+  justify-content:center;
+  text-align:center;
+}
+header h2{
+  font-weight: 1000;
+color:silver;
+color:white;
+}
+.back-link{
+  display:inline-block;
+  margin-top:10px;
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:999px;
+  color:white;
+  font-family:Arial, sans-serif;
+  font-size:.86rem;
+  font-weight:600;
+  text-decoration:none;
+  transition:background .2s ease, color .2s ease;
+}
+.back-link:hover,
+.back-link:focus-visible{
+  background:white;
+  color:#003399;
+}
+main{
+min-height:80%;
+width:100%;
+background:rgba(255,255,255,.8);
+border-radius:0 0 10px 10px;
+padding:4px;
+}
